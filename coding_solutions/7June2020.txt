@@ -1,0 +1,18 @@
+Problem Statement: Write a program in C to get and set system date time in Windows
+
+#include <stdio.h> #include <dos.h> int main()
+{
+
+char choice;
+
+struct dosdate_t date; 
+/*predefine structure to get date*/
+
+_dos_getdate(&date);
+
+printf("\nCurrent date is : %02d -%02d -%02d",date.day,date.month,date.year); 
+printf("\nWant to change date (Y: yes):");
+choice=getchar();
+if(choice=='Y'||choice=='y')
+{
+ printf("Enter new date :\n");
