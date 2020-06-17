@@ -1,0 +1,94 @@
+Problem Statement:
+ C Program to find the first non repeating character in a string.
+
+
+
+
+
+#define MAX_SIZE 256
+
+
+//5
+struct element{ int count;
+int index;
+
+};
+
+
+//6
+int findFirstNonRepeatedChar(char *str){
+
+//7
+
+struct element *recordTable = (struct element *)calloc(sizeof(struct element),MAX_SIZE);
+//8
+ 
+int i;
+
+int resultElementIndex = -1;
+
+
+//9
+for(i=0 ; *(str+i) ; i++){
+
+if(!isspace(*(str+i))){ recordTable[*(str+i)].count ++; recordTable[*(str+i)].index = i;
+}
+
+}
+
+
+//10
+
+for(i=0; i < MAX_SIZE ; i++){
+//11
+
+if(recordTable[i].count == 1){
+//12
+
+if(resultElementIndex == -1){ resultElementIndex = recordTable[i].index;
+}else{
+
+if(recordTable[i].index < resultElementIndex){ resultElementIndex = recordTable[i].index;
+}
+ 
+}
+
+}
+}
+
+
+//13
+
+return resultElementIndex;
+}
+
+
+
+
+int main(){
+
+//1
+char str[100];
+
+
+//2
+
+printf("Enter a string : \n"); fgets(str,100,stdin);
+
+
+//3
+
+int index = findFirstNonRepeatedChar(str);
+
+
+//4
+
+if(index == -1){
+ 
+printf("No element found \n");
+
+}else{
+printf("First non-repeated character %c \n",str[index]);
+
+}
+}
